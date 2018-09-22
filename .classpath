@@ -8,6 +8,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="E:/GitHub/A00429404_MCDA5510/Library/commons-csv-1.2.jar"/>
-	<classpathentry kind="lib" path="E:/GitHub/A00429404_MCDA5510/Library/csvjdbc-1.0-27.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

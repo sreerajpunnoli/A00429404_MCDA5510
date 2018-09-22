@@ -16,13 +16,15 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
-public class Sree {
+public class TraverseCSV {
 
 	Logger l = Logger.getAnonymousLogger();
 
 	private static long rowCount = 0L;
-	
+
 	private static long skippedRowCount = 0L;
+
+	private String date;
 
 	private static final String CONFIG = "config.properties";
 
@@ -35,34 +37,28 @@ public class Sree {
 	private static final String NEW_LINE_SEPARATOR = "\n";
 
 	private static final Object[] FILE_HEADER = { "First Name", "Last Name", "Street Number", "Street", "City",
-			"Province", "Postal Code", "Country", "Phone Number", "email Address", "Date (yyyy/mm/dd)" };
+			"Province", "Postal Code", "Country", "Phone Number", "email Address", "Date" };
 
 	public static void main(String[] args) {
-		Sree s = new Sree();
+		TraverseCSV traverseCSV = new TraverseCSV();
 		long startTime = System.currentTimeMillis();
-		Properties prop = s.fetchProperties();
-		System.out.println("P:" + prop);
+		Properties prop = traverseCSV.fetchProperties();
 
 		String outputFileName = prop.getProperty(OUTPUT_FILE_NAME);
 		if (outputFileName != null && !outputFileName.endsWith(".csv")) {
 			outputFileName += ".csv";
 		}
+
 		FileWriter fileWriter = null;
 		CSVPrinter csvFilePrinter = null;
 		try {
 
-//			fileWriter = new FileWriter("D:\\SMU\\Study\\MCDA 5510 Soft Dev in Bus Env Dan Penny\\Output\\output.csv");
 			fileWriter = new FileWriter(prop.getProperty(WRITE_DIRECTORY_CONFIG) + File.separator + outputFileName);
 			CSVFormat csvFileFormat = CSVFormat.DEFAULT.withRecordSeparator(NEW_LINE_SEPARATOR);
 			csvFilePrinter = new CSVPrinter(fileWriter, csvFileFormat);
 			csvFilePrinter.printRecord(FILE_HEADER);
 
-			String ss = prop.getProperty(READ_DIRECTORY_CONFIG);
-			s.walk(ss, csvFilePrinter);
-//			s.walk("D:\\SMU\\Study\\MCDA 5510 Soft Dev in Bus Env Dan Penny\\Sample Data", csvFilePrinter);
-
-			System.out.println("rowCount:" + rowCount);
-			System.out.println("skippedRowCount:" + skippedRowCount);
+			traverseCSV.walk(prop.getProperty(READ_DIRECTORY_CONFIG), csvFilePrinter);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -74,10 +70,11 @@ public class Sree {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
-		long endTime = System.currentTimeMillis();
-		System.out.println(endTime - startTime);
+
+		traverseCSV.l.log(Level.INFO, "rowCount:" + rowCount);
+		traverseCSV.l.log(Level.INFO, "skippedRowCount:" + skippedRowCount);
+		traverseCSV.l.log(Level.INFO, "Total Time taken(s):" + (System.currentTimeMillis() - startTime) / 1000.0);
 	}
 
 	private Properties fetchProperties() {
@@ -96,24 +93,28 @@ public class Sree {
 
 	public void walk(String path, CSVPrinter csvFilePrinter) {
 		if (path == null) {
-			System.out.println("pathnull");
+			l.log(Level.WARNING, "File Path is null");
 			return;
 		}
-		System.out.println(path);
 		File root = new File(path);
 		File[] list = root.listFiles();
 
 		if (list == null) {
-			System.out.println("listull");
+			l.log(Level.WARNING, "File Location is empty");
 			return;
 		}
 
+		boolean isDateTaken = false;
 		for (File f : list) {
 			if (f.isDirectory()) {
 				walk(f.getAbsolutePath(), csvFilePrinter);
 			} else {
 				if (!f.getName().endsWith(".csv")) {
 					continue;
+				}
+				if (!isDateTaken) {
+					date = getDate(f.getAbsoluteFile());
+					isDateTaken = true;
 				}
 				parseCSVFile(f.getAbsoluteFile(), csvFilePrinter);
 			}
@@ -138,7 +139,15 @@ public class Sree {
 					String country = record.get(FILE_HEADER[7].toString());
 					String phone = record.get(FILE_HEADER[8].toString());
 					String email = record.get(FILE_HEADER[9].toString());
-					String date = getDate(file);
+
+//					if (firstName == null || firstName.trim().isEmpty() || lastName == null || lastName.trim().isEmpty()
+//							|| streetNo == null || streetNo.trim().isEmpty() || street == null
+//							|| street.trim().isEmpty() || city == null || city.trim().isEmpty() || province == null
+//							|| province.trim().isEmpty() || postCode == null || postCode.trim().isEmpty()
+//							|| country == null || country.trim().isEmpty() || phone == null || phone.trim().isEmpty()
+//							|| email == null || email.trim().isEmpty() || date == null || date.trim().isEmpty()) {
+//						
+//					}
 
 					List<String> output = new ArrayList<String>();
 					output.add(firstName);
@@ -158,13 +167,12 @@ public class Sree {
 					rowCount++;
 				} catch (Exception e) {
 					skippedRowCount++;
-					e.printStackTrace();
-					l.log(Level.WARNING, "" + e);
+					l.log(Level.SEVERE, "" + e);
 					return;
 				}
 			}
 		} catch (IOException e) {
-			l.log(Level.WARNING, "" + e);
+			l.log(Level.SEVERE, "" + e);
 			e.printStackTrace();
 			return;
 		}
@@ -193,38 +201,5 @@ public class Sree {
 
 		return year + "/" + month + "/" + day;
 	}
-
-//	if (firstName == null || firstName.trim().isEmpty() || lastName == null || lastName.trim().isEmpty()
-//	|| streetNo == null || streetNo.trim().isEmpty() || street == null || street.trim().isEmpty()
-//	|| city == null || city.trim().isEmpty() || province == null || province.trim().isEmpty()
-//	|| postCode == null || postCode.trim().isEmpty() || country == null || country.trim().isEmpty()
-//	|| phone == null || phone.trim().isEmpty() || email == null || email.trim().isEmpty()
-//	|| date == null || date.trim().isEmpty()) {
-//
-//StringBuilder sb = new StringBuilder();
-//sb.append("Row Skipped|firstName:");
-//sb.append(firstName);
-//sb.append("|lastName:");
-//sb.append(lastName);
-//sb.append("|streetNo:");
-//sb.append(streetNo);
-//sb.append("|street:");
-//sb.append(street);
-//sb.append("|city:");
-//sb.append(city);
-//sb.append("|province:");
-//sb.append(province);
-//sb.append("|postCode:");
-//sb.append(postCode);
-//sb.append("|country:");
-//sb.append(country);
-//sb.append("|phone:");
-//sb.append(phone);
-//sb.append("|email:");
-//sb.append(email);
-//sb.append("|date:");
-//sb.append(date);
-//continue;
-//}
 
 }
