@@ -1,0 +1,12 @@
+Sep 23, 2018 12:48:03 PM assignment1.TraverseCSV parseCSVFile
+WARNING: java.lang.IllegalArgumentException: Index for header 'Country' is 7 but CSVRecord only has 7 values!
+Sep 23, 2018 12:48:03 PM assignment1.TraverseCSV parseCSVFile
+WARNING: java.lang.IllegalArgumentException: Index for header 'Last Name' is 1 but CSVRecord only has 1 values!
+Sep 23, 2018 12:48:03 PM assignment1.TraverseCSV parseCSVFile
+WARNING: java.lang.IllegalArgumentException: Index for header 'Postal Code' is 6 but CSVRecord only has 6 values!
+Sep 23, 2018 12:48:06 PM assignment1.TraverseCSV main
+INFO: Row Count:282906
+Sep 23, 2018 12:48:06 PM assignment1.TraverseCSV main
+INFO: Skipped Row Count:3
+Sep 23, 2018 12:48:06 PM assignment1.TraverseCSV main
+INFO: Total Time taken(s):4.329
