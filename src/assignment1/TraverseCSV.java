@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import org.apache.commons.csv.CSVFormat;
@@ -18,7 +19,7 @@ import org.apache.commons.csv.CSVRecord;
 
 public class TraverseCSV {
 
-	Logger l = Logger.getAnonymousLogger();
+	private static final Logger l = Logger.getAnonymousLogger();
 
 	private static long rowCount = 0L;
 
@@ -26,7 +27,9 @@ public class TraverseCSV {
 
 	private String date;
 
-	private static final String CONFIG = "config.properties";
+	private static final String CONFIG_PROPERTIES = "config.properties";
+
+	private static final String LOG_PROPERTIES = "log.properties";
 
 	private static final String READ_DIRECTORY_CONFIG = "data.readDirectory";
 
@@ -42,9 +45,11 @@ public class TraverseCSV {
 	public static void main(String[] args) {
 		TraverseCSV traverseCSV = new TraverseCSV();
 		long startTime = System.currentTimeMillis();
-		Properties prop = traverseCSV.fetchProperties();
 
-		String outputFileName = prop.getProperty(OUTPUT_FILE_NAME);
+		Properties conf = traverseCSV.fetchConfigProperties();
+		traverseCSV.addLogProperties();
+
+		String outputFileName = conf.getProperty(OUTPUT_FILE_NAME);
 		if (outputFileName != null && !outputFileName.endsWith(".csv")) {
 			outputFileName += ".csv";
 		}
@@ -53,39 +58,59 @@ public class TraverseCSV {
 		CSVPrinter csvFilePrinter = null;
 		try {
 
-			fileWriter = new FileWriter(prop.getProperty(WRITE_DIRECTORY_CONFIG) + File.separator + outputFileName);
+			fileWriter = new FileWriter(conf.getProperty(WRITE_DIRECTORY_CONFIG) + File.separator + outputFileName);
 			CSVFormat csvFileFormat = CSVFormat.DEFAULT.withRecordSeparator(NEW_LINE_SEPARATOR);
 			csvFilePrinter = new CSVPrinter(fileWriter, csvFileFormat);
 			csvFilePrinter.printRecord(FILE_HEADER);
 
-			traverseCSV.walk(prop.getProperty(READ_DIRECTORY_CONFIG), csvFilePrinter);
+			traverseCSV.walk(conf.getProperty(READ_DIRECTORY_CONFIG), csvFilePrinter);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			l.log(Level.SEVERE, "" + e);
 		} finally {
 			try {
 				fileWriter.flush();
 				fileWriter.close();
 				csvFilePrinter.close();
 			} catch (IOException e) {
-				e.printStackTrace();
+				l.log(Level.SEVERE, "" + e);
 			}
 		}
 
-		traverseCSV.l.log(Level.INFO, "rowCount:" + rowCount);
-		traverseCSV.l.log(Level.INFO, "skippedRowCount:" + skippedRowCount);
-		traverseCSV.l.log(Level.INFO, "Total Time taken(s):" + (System.currentTimeMillis() - startTime) / 1000.0);
+		l.log(Level.INFO, "Row Count:" + rowCount);
+		l.log(Level.INFO, "Skipped Row Count:" + skippedRowCount);
+		l.log(Level.INFO, "Total Time taken(s):" + (System.currentTimeMillis() - startTime) / 1000.0);
 	}
 
-	private Properties fetchProperties() {
+	private void addLogProperties() {
+		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(LOG_PROPERTIES);
+		try {
+			LogManager.getLogManager().readConfiguration(inputStream);
+		} catch (Exception e) {
+			l.log(Level.SEVERE, "" + e);
+		}
+
+		try {
+			inputStream.close();
+		} catch (IOException e) {
+			l.log(Level.SEVERE, "" + e);
+		}
+	}
+
+	private Properties fetchConfigProperties() {
 		Properties prop = new Properties();
 
-		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(CONFIG);
-
+		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(CONFIG_PROPERTIES);
 		try {
 			prop.load(inputStream);
 		} catch (IOException e) {
-			l.log(Level.WARNING, "Property File Not Found|FileName:" + CONFIG);
+			l.log(Level.WARNING, "Property File Not Found|FileName:" + CONFIG_PROPERTIES);
+		}
+
+		try {
+			inputStream.close();
+		} catch (IOException e) {
+			l.log(Level.SEVERE, "" + e);
 		}
 		return prop;
 
@@ -167,14 +192,12 @@ public class TraverseCSV {
 					rowCount++;
 				} catch (Exception e) {
 					skippedRowCount++;
-					l.log(Level.SEVERE, "" + e);
-					return;
+					l.log(Level.WARNING, "" + e);
 				}
 			}
 		} catch (IOException e) {
 			l.log(Level.SEVERE, "" + e);
-			e.printStackTrace();
-			return;
+			l.log(Level.SEVERE, "" + e);
 		}
 
 	}
