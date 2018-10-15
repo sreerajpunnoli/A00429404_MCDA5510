@@ -1,0 +1,106 @@
+Oct 15, 2018 2:39:39 AM assignment2.Assignment2 sqlOperations
+INFO: Enter a number: 0 to exit, 1 to Create, 2 to Update, 3 to Get, 4 to Get all, 5 to remove
+Oct 15, 2018 2:40:12 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Transaction Id
+Oct 15, 2018 2:40:16 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Name On Card
+Oct 15, 2018 2:40:24 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Card Number
+Oct 15, 2018 2:40:42 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Unit Price
+Oct 15, 2018 2:40:45 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Quantity
+Oct 15, 2018 2:40:50 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Total Price
+Oct 15, 2018 2:40:53 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Expiry Date (MM/YYYY)
+Oct 15, 2018 2:41:06 AM assignment2.Assignment2 sqlOperations
+INFO: Operation Successful
+Oct 15, 2018 2:41:06 AM assignment2.Assignment2 sqlOperations
+INFO: Enter a number: 0 to exit, 1 to Create, 2 to Update, 3 to Get, 4 to Get all, 5 to remove
+Oct 15, 2018 2:41:13 AM assignment2.Assignment2 sqlOperations
+INFO: Enter Transaction Id
+Oct 15, 2018 2:41:24 AM assignment2.Assignment2 sqlOperations
+INFO: [id:10 ,nameOnCard:Sreeraj P ,cardNo:4000600070008000 ,unitPrice:10.0 ,quantity:20 ,totalPrice:200.0 ,expDate:08/2023 ,createdOn:2018-10-15 02:41:06.0 ,createdBy:s_punnoli ,cardType:Visa]
+Oct 15, 2018 2:41:24 AM assignment2.Assignment2 sqlOperations
+INFO: Operation Successful
+Oct 15, 2018 2:41:24 AM assignment2.Assignment2 sqlOperations
+INFO: Enter a number: 0 to exit, 1 to Create, 2 to Update, 3 to Get, 4 to Get all, 5 to remove
+Oct 15, 2018 2:41:44 AM assignment2.Assignment2 updateTransactionObject
+INFO: Enter Transaction Id
+Oct 15, 2018 2:41:48 AM assignment2.Assignment2 updateTransactionObject
+INFO: Enter columns (seperated by ,) to be changed
+Oct 15, 2018 2:41:48 AM assignment2.Assignment2 updateTransactionObject
+INFO: Enter 0 for nameOnCard, 1 for cardNo, 2 for unitPrice, 3 for quantity, 4 for totalPrice, 5 for expDate
+Oct 15, 2018 2:42:07 AM assignment2.Assignment2 updateTransactionObject
+INFO: Enter Card Number
+Oct 15, 2018 2:42:27 AM assignment2.Assignment2 updateTransactionObject
+INFO: Enter Expiry Date (MM/YYYY)
+Oct 15, 2018 2:42:38 AM assignment2.Assignment2 sqlOperations
+INFO: Operation Successful
+Oct 15, 2018 2:42:38 AM assignment2.Assignment2 sqlOperations
+INFO: Enter a number: 0 to exit, 1 to Create, 2 to Update, 3 to Get, 4 to Get all, 5 to remove
+Oct 15, 2018 2:42:43 AM assignment2.Assignment2 sqlOperations
+INFO: Enter Transaction Id
+Oct 15, 2018 2:42:46 AM assignment2.Assignment2 sqlOperations
+INFO: [id:10 ,nameOnCard:Sreeraj P ,cardNo:5100700080008000 ,unitPrice:10.0 ,quantity:20 ,totalPrice:200.0 ,expDate:09/2025 ,createdOn:2018-10-15 02:41:06.0 ,createdBy:s_punnoli ,cardType:MasterCard]
+Oct 15, 2018 2:42:46 AM assignment2.Assignment2 sqlOperations
+INFO: Operation Successful
+Oct 15, 2018 2:42:46 AM assignment2.Assignment2 sqlOperations
+INFO: Enter a number: 0 to exit, 1 to Create, 2 to Update, 3 to Get, 4 to Get all, 5 to remove
+Oct 15, 2018 2:43:24 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Transaction Id
+Oct 15, 2018 2:43:28 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Name On Card
+Oct 15, 2018 2:43:31 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Card Number
+Oct 15, 2018 2:44:01 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Unit Price
+Oct 15, 2018 2:44:03 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Quantity
+Oct 15, 2018 2:44:08 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Total Price
+Oct 15, 2018 2:44:12 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Expiry Date (MM/YYYY)
+Oct 15, 2018 2:44:22 AM assignment2.MySQLTransaction createTransaction
+SEVERE: Transaction already exits|Only Updation is possible|java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '10' for key 'PRIMARY'
+Oct 15, 2018 2:44:22 AM assignment2.Assignment2 sqlOperations
+INFO: Operation UnSuccessful
+Oct 15, 2018 2:44:22 AM assignment2.Assignment2 sqlOperations
+INFO: Enter a number: 0 to exit, 1 to Create, 2 to Update, 3 to Get, 4 to Get all, 5 to remove
+Oct 15, 2018 2:44:25 AM assignment2.Assignment2 sqlOperations
+INFO: Enter Transaction Id
+Oct 15, 2018 2:44:39 AM assignment2.Assignment2 sqlOperations
+INFO: [id:10 ,nameOnCard:Sreeraj P ,cardNo:5100700080008000 ,unitPrice:10.0 ,quantity:20 ,totalPrice:200.0 ,expDate:09/2025 ,createdOn:2018-10-15 02:41:06.0 ,createdBy:s_punnoli ,cardType:MasterCard]
+Oct 15, 2018 2:44:39 AM assignment2.Assignment2 sqlOperations
+INFO: Operation Successful
+Oct 15, 2018 2:44:39 AM assignment2.Assignment2 sqlOperations
+INFO: Enter a number: 0 to exit, 1 to Create, 2 to Update, 3 to Get, 4 to Get all, 5 to remove
+Oct 15, 2018 2:44:44 AM assignment2.Assignment2 sqlOperations
+INFO: Enter Transaction Id
+Oct 15, 2018 2:44:47 AM assignment2.Assignment2 sqlOperations
+INFO: Operation Successful
+Oct 15, 2018 2:44:47 AM assignment2.Assignment2 sqlOperations
+INFO: Enter a number: 0 to exit, 1 to Create, 2 to Update, 3 to Get, 4 to Get all, 5 to remove
+Oct 15, 2018 2:44:54 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Transaction Id
+Oct 15, 2018 2:44:57 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Name On Card
+Oct 15, 2018 2:45:09 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Card Number
+Oct 15, 2018 2:45:22 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Unit Price
+Oct 15, 2018 2:45:25 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Quantity
+Oct 15, 2018 2:45:27 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Total Price
+Oct 15, 2018 2:45:32 AM assignment2.Assignment2 setTransactionObject
+INFO: Enter Expiry Date (MM/YYYY)
+Oct 15, 2018 2:45:41 AM assignment2.Assignment2 sqlOperations
+INFO: Operation Successful
+Oct 15, 2018 2:45:41 AM assignment2.Assignment2 sqlOperations
+INFO: Enter a number: 0 to exit, 1 to Create, 2 to Update, 3 to Get, 4 to Get all, 5 to remove
+Oct 15, 2018 2:45:47 AM assignment2.Assignment2 sqlOperations
+INFO: Exiting...
+Oct 15, 2018 2:45:47 AM assignment2.Assignment2 sqlOperations
+INFO: Operation Successful
