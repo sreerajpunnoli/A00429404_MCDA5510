@@ -64,7 +64,7 @@ public class MySQLTransaction {
 			l.log(Level.SEVERE, "Error in removing Transaction from MySQL|" + e);
 		}
 		if (rowCount == 0) {
-			l.log(Level.INFO, "No transaction with transaction id:" + transactionId);
+			l.log(Level.WARNING, "No transaction with transaction id:" + transactionId);
 			return false;
 		}
 		return true;

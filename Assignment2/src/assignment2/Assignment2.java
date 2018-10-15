@@ -64,18 +64,21 @@ public class Assignment2 {
 					status = true;
 					break;
 				case 1:
+					l.log(Level.INFO, "Create Transaction initialised");
 					isValid = setTransactionObject(transaction, reader, userName);
 					if (isValid) {
 						status = transact.createTransaction(transaction, userName);
 					}
 					break;
 				case 2:
+					l.log(Level.INFO, "Update Transaction initialised");
 					isValid = updateTransactionObject(transaction, reader, userName, transact);
 					if (isValid) {
 						status = transact.updateTransaction(transaction);
 					}
 					break;
 				case 3:
+					l.log(Level.INFO, "Get Transaction initialised");
 					l.log(Level.INFO, "Enter Transaction Id");
 					transactionId = validateInteger(reader.nextLine());
 					transaction = transact.getTransaction(transactionId);
@@ -85,6 +88,7 @@ public class Assignment2 {
 					status = true;
 					break;
 				case 4:
+					l.log(Level.INFO, "Get all Transaction initialised");
 					Collection<Transaction> transactions = transact.getAllTransaction();
 					if (transactions != null) {
 						for (Transaction t : transactions) {
@@ -94,6 +98,7 @@ public class Assignment2 {
 					status = true;
 					break;
 				case 5:
+					l.log(Level.INFO, "Remove Transaction initialised");
 					l.log(Level.INFO, "Enter Transaction Id");
 					transactionId = validateInteger(reader.nextLine());
 					status = transact.removeTransaction(transactionId);
