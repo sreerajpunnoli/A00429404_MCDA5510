@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Properties;
@@ -88,7 +89,7 @@ public class MySQLTransaction {
 				transaction.setQuantity(resultSet.getInt("Quantity"));
 				transaction.setTotalPrice(resultSet.getFloat("TotalPrice"));
 				transaction.setExpDate(resultSet.getString("ExpDate"));
-				transaction.setCreatedOn(resultSet.getDate("CreatedOn"));
+				transaction.setCreatedOn(resultSet.getTimestamp("CreatedOn"));
 				transaction.setCreatedBy(resultSet.getString("CreatedBy"));
 				transaction.setCardType(resultSet.getString("CardType"));
 			}
@@ -205,7 +206,7 @@ public class MySQLTransaction {
 			preparedStatement.setInt(5, transaction.getQuantity());
 			preparedStatement.setFloat(6, transaction.getTotalPrice());
 			preparedStatement.setString(7, transaction.getExpDate());
-			preparedStatement.setDate(8, transaction.getCreatedOn());
+			preparedStatement.setTimestamp(8, transaction.getCreatedOn());
 			preparedStatement.setString(9, transaction.getCreatedBy());
 			preparedStatement.setString(10, transaction.getCardType());
 			rowCount = preparedStatement.executeUpdate();
@@ -252,7 +253,7 @@ public class MySQLTransaction {
 			transaction.setQuantity(resultSet.getInt("Quantity"));
 			transaction.setTotalPrice(resultSet.getFloat("TotalPrice"));
 			transaction.setExpDate(resultSet.getString("ExpDate"));
-			transaction.setCreatedOn(resultSet.getDate("CreatedOn"));
+			transaction.setCreatedOn(resultSet.getTimestamp("CreatedOn"));
 			transaction.setCreatedBy(resultSet.getString("CreatedBy"));
 			transaction.setCardType(resultSet.getString("CardType"));
 

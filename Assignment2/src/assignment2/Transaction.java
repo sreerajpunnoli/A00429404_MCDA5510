@@ -1,6 +1,6 @@
 package assignment2;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Transaction {
 
@@ -18,7 +18,7 @@ public class Transaction {
 
 	private String expDate;
 
-	private Date createdOn;
+	private Timestamp createdOn;
 
 	private String createdBy;
 
@@ -80,11 +80,11 @@ public class Transaction {
 		this.expDate = expDate;
 	}
 
-	public Date getCreatedOn() {
+	public Timestamp getCreatedOn() {
 		return createdOn;
 	}
 
-	public void setCreatedOn(Date createdOn) {
+	public void setCreatedOn(Timestamp createdOn) {
 		this.createdOn = createdOn;
 	}
 

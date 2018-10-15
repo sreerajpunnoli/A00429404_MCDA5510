@@ -2,13 +2,17 @@ package assignment2;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Date;
+
+import java.sql.Timestamp;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 import java.util.Collection;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 public class Assignment2 {
@@ -17,6 +21,8 @@ public class Assignment2 {
 
 	private static final String CONFIG_PROPERTIES = "config.properties";
 
+	private static final String LOG_PROPERTIES = "log.properties";
+	
 	private static final String USER_NAME = "user.name";
 
 	DateFormat format = new SimpleDateFormat("MM/yyyy");
@@ -24,22 +30,22 @@ public class Assignment2 {
 	public static void main(String[] args) {
 		Assignment2 assignment = new Assignment2();
 		Properties conf = assignment.fetchConfigProperties();
-
+		assignment.addLogProperties();
+		
 		MySQLTransaction transact = new MySQLTransaction();
 		try {
 			transact.createConnection(conf);
 			assignment.sqlOperations(transact);
 		} catch (Exception e) {
-			transact.closeConnection();
 			l.log(Level.SEVERE, "Error with MySQL Connection|" + e);
 		}
+		transact.closeConnection();
 	}
 
 	private void sqlOperations(MySQLTransaction transact) {
 		String userName = System.getProperty(USER_NAME);
 
 		Scanner reader = new Scanner(System.in);
-		reader.useDelimiter("\n");
 
 		int num = 6;
 		while (num > 0) {
@@ -115,12 +121,10 @@ public class Assignment2 {
 			MySQLTransaction transact) {
 		try {
 			l.log(Level.INFO, "Enter Transaction Id");
-			String id = reader.nextLine();
-			transaction.setId(validateInteger(id));
+			transaction.setId(validateInteger(reader.nextLine()));
 
 			l.log(Level.INFO, "Enter columns (seperated by ,) to be changed");
-			// createdOn, createdBy, cardType cannot be modified as they are system
-			// generated
+			// createdOn, createdBy, cardType cannot be modified as they are system generated
 			l.log(Level.INFO,
 					"Enter 0 for nameOnCard, 1 for cardNo, 2 for unitPrice, 3 for quantity, 4 for totalPrice, 5 for expDate");
 			String[] indexes = reader.nextLine().split(",");
@@ -143,7 +147,7 @@ public class Assignment2 {
 				case "1":
 					l.log(Level.INFO, "Enter Card Number");
 					String cardNo = reader.nextLine();
-					if (validateString(cardNo) && cardNo.matches("[0-9]+")) {
+					if (cardNo != null && cardNo.matches("[0-9]+")) {
 						transaction.setCardNo(cardNo);
 						transaction.setCardType(getCardType(cardNo));
 					} else {
@@ -152,19 +156,16 @@ public class Assignment2 {
 					break;
 				case "2":
 					l.log(Level.INFO, "Enter Unit Price");
-					String unitPrice = reader.nextLine();
-					transaction.setUnitPrice(validateFloat(unitPrice));
+					transaction.setUnitPrice(validateFloat(reader.nextLine()));
 					break;
 				case "3":
 					l.log(Level.INFO, "Enter Quantity");
-					String quantity = reader.nextLine();
-					transaction.setQuantity(validateInteger(quantity));
+					transaction.setQuantity(validateInteger(reader.nextLine()));
 
 					break;
 				case "4":
 					l.log(Level.INFO, "Enter Total Price");
-					String totalPrice = reader.nextLine();
-					transaction.setTotalPrice(validateFloat(totalPrice));
+					transaction.setTotalPrice(validateFloat(reader.nextLine()));
 					break;
 				case "5":
 					l.log(Level.INFO, "Enter Expiry Date (MM/YYYY)");
@@ -190,8 +191,7 @@ public class Assignment2 {
 	private boolean setTransactionObject(Transaction transaction, Scanner reader, String userName) {
 		try {
 			l.log(Level.INFO, "Enter Transaction Id");
-			String id = reader.nextLine();
-			transaction.setId(validateInteger(id));
+			transaction.setId(validateInteger(reader.nextLine()));
 
 			l.log(Level.INFO, "Enter Name On Card");
 			String name = reader.nextLine();
@@ -203,7 +203,7 @@ public class Assignment2 {
 
 			l.log(Level.INFO, "Enter Card Number");
 			String cardNo = reader.nextLine();
-			if (validateString(cardNo) && cardNo.matches("[0-9]+")) {
+			if (cardNo != null && cardNo.matches("[0-9]+")) {
 				transaction.setCardNo(cardNo);
 				transaction.setCardType(getCardType(cardNo));
 			} else {
@@ -211,16 +211,13 @@ public class Assignment2 {
 			}
 
 			l.log(Level.INFO, "Enter Unit Price");
-			String unitPrice = reader.nextLine();
-			transaction.setUnitPrice(validateFloat(unitPrice));
+			transaction.setUnitPrice(validateFloat(reader.nextLine()));
 
 			l.log(Level.INFO, "Enter Quantity");
-			String quantity = reader.nextLine();
-			transaction.setQuantity(validateInteger(quantity));
+			transaction.setQuantity(validateInteger(reader.nextLine()));
 
 			l.log(Level.INFO, "Enter Total Price");
-			String totalPrice = reader.nextLine();
-			transaction.setTotalPrice(validateFloat(totalPrice));
+			transaction.setTotalPrice(validateFloat(reader.nextLine()));
 
 			l.log(Level.INFO, "Enter Expiry Date (MM/YYYY)");
 			String expDate = reader.nextLine();
@@ -230,7 +227,7 @@ public class Assignment2 {
 				throw new Exception("Invalid Expiry Date");
 			}
 
-			transaction.setCreatedOn(new Date(System.currentTimeMillis()));
+			transaction.setCreatedOn(new Timestamp(System.currentTimeMillis()));
 			transaction.setCreatedBy(userName);
 		} catch (Exception e) {
 			l.log(Level.SEVERE, "Validation Failed|" + e);
@@ -243,7 +240,7 @@ public class Assignment2 {
 		return Float.parseFloat(nextLine);
 	}
 
-	private String getCardType(String cardNo) {
+	private String getCardType(String cardNo) throws Exception {
 		if (cardNo.matches("^[5][1-5].*") && cardNo.length() == 16) {
 			return "MasterCard";
 		} else if (cardNo.matches("^[4].*") && cardNo.length() == 16) {
@@ -251,7 +248,7 @@ public class Assignment2 {
 		} else if (cardNo.matches("^[3][4|7].*") && cardNo.length() == 15) {
 			return "American Express";
 		}
-		return "Other";
+		throw new Exception("Invalid Credit Card");
 	}
 
 	private Integer validateInteger(String nextLine) {
@@ -297,4 +294,20 @@ public class Assignment2 {
 		return prop;
 
 	}
+
+	private void addLogProperties() {
+		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(LOG_PROPERTIES);
+		try {
+			LogManager.getLogManager().readConfiguration(inputStream);
+		} catch (Exception e) {
+			l.log(Level.SEVERE, "" + e);
+		}
+
+		try {
+			inputStream.close();
+		} catch (IOException e) {
+			l.log(Level.SEVERE, "" + e);
+		}
+	}
+
 }
