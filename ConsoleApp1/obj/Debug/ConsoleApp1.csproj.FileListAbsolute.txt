@@ -1,0 +1,7 @@
+/Users/sreerajpunnoli/git/MCDA5510_Assignments/ConsoleApp1/ConsoleApp1/bin/Debug/ConsoleApp1.exe.config
+/Users/sreerajpunnoli/git/MCDA5510_Assignments/ConsoleApp1/ConsoleApp1/bin/Debug/ConsoleApp1.exe
+/Users/sreerajpunnoli/git/MCDA5510_Assignments/ConsoleApp1/ConsoleApp1/bin/Debug/ConsoleApp1.pdb
+/Users/sreerajpunnoli/git/MCDA5510_Assignments/ConsoleApp1/ConsoleApp1/obj/Debug/ConsoleApp1.csprojAssemblyReference.cache
+/Users/sreerajpunnoli/git/MCDA5510_Assignments/ConsoleApp1/ConsoleApp1/obj/Debug/ConsoleApp1.csproj.CoreCompileInputs.cache
+/Users/sreerajpunnoli/git/MCDA5510_Assignments/ConsoleApp1/ConsoleApp1/obj/Debug/ConsoleApp1.exe
+/Users/sreerajpunnoli/git/MCDA5510_Assignments/ConsoleApp1/ConsoleApp1/obj/Debug/ConsoleApp1.pdb
