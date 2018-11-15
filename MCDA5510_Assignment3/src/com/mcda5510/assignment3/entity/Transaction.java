@@ -1,8 +1,17 @@
 package com.mcda5510.assignment3.entity;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Transaction {
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Transaction implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 
