@@ -12,9 +12,9 @@ public class Assignment3 {
 
 	public final Logger l = Logger.getLogger("Assignment3");
 
-	MySQLAccess mysqlAccess = null;
+	public MySQLAccess mysqlAccess = null;
 
-	private void createConnection() {
+	public void createConnection() {
 		if (mysqlAccess == null) {
 			ConnectionFactory connectionFactory = getConnectionFactory(DatabaseType.MYSQL);
 			DBConnection connection = connectionFactory.getConnection();
