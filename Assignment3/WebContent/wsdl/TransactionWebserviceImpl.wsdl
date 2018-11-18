@@ -5,17 +5,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://service.assignment3.mcda5510.com" xmlns="http://www.w3.org/2001/XMLSchema">
    <import namespace="http://entity.assignment3.mcda5510.com"/>
-   <element name="updateTransaction">
+   <element name="getTransaction">
     <complexType>
      <sequence>
-      <element name="transaction" type="tns1:Transaction"/>
+      <element name="transactionId" type="xsd:int"/>
      </sequence>
     </complexType>
    </element>
-   <element name="updateTransactionResponse">
+   <element name="getTransactionResponse">
     <complexType>
      <sequence>
-      <element name="updateTransactionReturn" type="xsd:boolean"/>
+      <element name="getTransactionReturn" type="tns1:Transaction"/>
      </sequence>
     </complexType>
    </element>
@@ -47,17 +47,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="getTransaction">
+   <element name="updateTransaction">
     <complexType>
      <sequence>
-      <element name="transactionId" type="xsd:int"/>
+      <element name="transaction" type="tns1:Transaction"/>
      </sequence>
     </complexType>
    </element>
-   <element name="getTransactionResponse">
+   <element name="updateTransactionResponse">
     <complexType>
      <sequence>
-      <element name="getTransactionReturn" type="tns1:Transaction"/>
+      <element name="updateTransactionReturn" type="xsd:boolean"/>
      </sequence>
     </complexType>
    </element>
@@ -88,17 +88,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="updateTransactionRequest">
+   <wsdl:message name="createTransactionResponse">
 
-      <wsdl:part element="impl:updateTransaction" name="parameters">
+      <wsdl:part element="impl:createTransactionResponse" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="createTransactionResponse">
+   <wsdl:message name="updateTransactionRequest">
 
-      <wsdl:part element="impl:createTransactionResponse" name="parameters">
+      <wsdl:part element="impl:updateTransaction" name="parameters">
 
       </wsdl:part>
 
@@ -146,13 +146,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="TransactionWebserviceImpl">
 
-      <wsdl:operation name="updateTransaction">
+      <wsdl:operation name="getTransaction">
 
-         <wsdl:input message="impl:updateTransactionRequest" name="updateTransactionRequest">
+         <wsdl:input message="impl:getTransactionRequest" name="getTransactionRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:updateTransactionResponse" name="updateTransactionResponse">
+         <wsdl:output message="impl:getTransactionResponse" name="getTransactionResponse">
 
        </wsdl:output>
 
@@ -182,13 +182,13 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getTransaction">
+      <wsdl:operation name="updateTransaction">
 
-         <wsdl:input message="impl:getTransactionRequest" name="getTransactionRequest">
+         <wsdl:input message="impl:updateTransactionRequest" name="updateTransactionRequest">
 
        </wsdl:input>
 
-         <wsdl:output message="impl:getTransactionResponse" name="getTransactionResponse">
+         <wsdl:output message="impl:updateTransactionResponse" name="updateTransactionResponse">
 
        </wsdl:output>
 
@@ -200,17 +200,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="updateTransaction">
+      <wsdl:operation name="getTransaction">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="updateTransactionRequest">
+         <wsdl:input name="getTransactionRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="updateTransactionResponse">
+         <wsdl:output name="getTransactionResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -254,17 +254,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getTransaction">
+      <wsdl:operation name="updateTransaction">
 
          <wsdlsoap:operation soapAction=""/>
 
-         <wsdl:input name="getTransactionRequest">
+         <wsdl:input name="updateTransactionRequest">
 
             <wsdlsoap:body use="literal"/>
 
          </wsdl:input>
 
-         <wsdl:output name="getTransactionResponse">
+         <wsdl:output name="updateTransactionResponse">
 
             <wsdlsoap:body use="literal"/>
 

@@ -24,12 +24,12 @@ public class TransactionWebserviceImplSoapBindingStub extends org.apache.axis.cl
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("updateTransaction");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "transaction"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://entity.assignment3.mcda5510.com", "Transaction"), com.mcda5510.assignment3.entity.Transaction.class, false, false);
+        oper.setName("getTransaction");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "transactionId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
-        oper.setReturnClass(boolean.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "updateTransactionReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://entity.assignment3.mcda5510.com", "Transaction"));
+        oper.setReturnClass(com.mcda5510.assignment3.entity.Transaction.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "getTransactionReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[0] = oper;
@@ -57,12 +57,12 @@ public class TransactionWebserviceImplSoapBindingStub extends org.apache.axis.cl
         _operations[2] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("getTransaction");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "transactionId"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
+        oper.setName("updateTransaction");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "transaction"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://entity.assignment3.mcda5510.com", "Transaction"), com.mcda5510.assignment3.entity.Transaction.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://entity.assignment3.mcda5510.com", "Transaction"));
-        oper.setReturnClass(com.mcda5510.assignment3.entity.Transaction.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "getTransactionReturn"));
+        oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+        oper.setReturnClass(boolean.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "updateTransactionReturn"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[3] = oper;
@@ -171,7 +171,7 @@ public class TransactionWebserviceImplSoapBindingStub extends org.apache.axis.cl
         }
     }
 
-    public boolean updateTransaction(com.mcda5510.assignment3.entity.Transaction transaction) throws java.rmi.RemoteException {
+    public com.mcda5510.assignment3.entity.Transaction getTransaction(int transactionId) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -183,11 +183,11 @@ public class TransactionWebserviceImplSoapBindingStub extends org.apache.axis.cl
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "updateTransaction"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "getTransaction"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {transaction});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(transactionId)});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -195,9 +195,9 @@ public class TransactionWebserviceImplSoapBindingStub extends org.apache.axis.cl
         else {
             extractAttachments(_call);
             try {
-                return ((java.lang.Boolean) _resp).booleanValue();
+                return (com.mcda5510.assignment3.entity.Transaction) _resp;
             } catch (java.lang.Exception _exception) {
-                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
+                return (com.mcda5510.assignment3.entity.Transaction) org.apache.axis.utils.JavaUtils.convert(_resp, com.mcda5510.assignment3.entity.Transaction.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
@@ -273,7 +273,7 @@ public class TransactionWebserviceImplSoapBindingStub extends org.apache.axis.cl
 }
     }
 
-    public com.mcda5510.assignment3.entity.Transaction getTransaction(int transactionId) throws java.rmi.RemoteException {
+    public boolean updateTransaction(com.mcda5510.assignment3.entity.Transaction transaction) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -285,11 +285,11 @@ public class TransactionWebserviceImplSoapBindingStub extends org.apache.axis.cl
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "getTransaction"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://service.assignment3.mcda5510.com", "updateTransaction"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(transactionId)});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {transaction});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -297,9 +297,9 @@ public class TransactionWebserviceImplSoapBindingStub extends org.apache.axis.cl
         else {
             extractAttachments(_call);
             try {
-                return (com.mcda5510.assignment3.entity.Transaction) _resp;
+                return ((java.lang.Boolean) _resp).booleanValue();
             } catch (java.lang.Exception _exception) {
-                return (com.mcda5510.assignment3.entity.Transaction) org.apache.axis.utils.JavaUtils.convert(_resp, com.mcda5510.assignment3.entity.Transaction.class);
+                return ((java.lang.Boolean) org.apache.axis.utils.JavaUtils.convert(_resp, boolean.class)).booleanValue();
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {

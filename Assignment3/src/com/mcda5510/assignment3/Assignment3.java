@@ -12,20 +12,31 @@ public class Assignment3 {
 
 	public final Logger l = Logger.getLogger("Assignment3");
 
-	public MySQLAccess mysqlAccess = null;
+	public MySQLAccess dao = null;
+
+	public static Assignment3 a = null;
+
+	private Assignment3() {
+	}
+
+	public static Assignment3 getInstance() {
+		if (a == null) {
+			a = new Assignment3();
+			a.createConnection();
+		}
+		return a;
+	}
 
 	public void createConnection() {
-		if (mysqlAccess == null) {
+		if (dao == null) {
 			ConnectionFactory connectionFactory = getConnectionFactory(DatabaseType.MYSQL);
 			DBConnection connection = connectionFactory.getConnection();
 
-			mysqlAccess = (MySQLAccess) connection.connect();
-
-//		connection.closeConnection();
+			dao = (MySQLAccess) connection.connect();
 		}
 	}
 
-	private static ConnectionFactory getConnectionFactory(DatabaseType databaseType) {
+	private ConnectionFactory getConnectionFactory(DatabaseType databaseType) {
 		switch (databaseType) {
 		case MYSQL:
 			return new MySqlConnectionFactory();

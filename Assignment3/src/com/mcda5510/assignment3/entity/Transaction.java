@@ -13,7 +13,7 @@ public class Transaction implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer id;
+	private Integer id; //for update
 
 	private String nameOnCard;
 
@@ -23,15 +23,15 @@ public class Transaction implements Serializable{
 
 	private Integer quantity;
 
-	private Float totalPrice;
+	private Float totalPrice;//
 
 	private String expDate;
 
-	private Date createdOn;
+	private Date createdOn;//
 
-	private String createdBy;
+	private String createdBy;//
 
-	private String cardType;
+	private String cardType;//
 
 	public Integer getId() {
 		return id;

@@ -4,11 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.logging.Logger;
 
 import com.mcda5510.assignment3.entity.Transaction;
 
-public class MySQLAccess implements SQLAccess{
+public class MySQLAccess implements SQLAccess {
 
 	public static final Logger l = Logger.getLogger("Assignment3");
 
@@ -27,59 +28,49 @@ public class MySQLAccess implements SQLAccess{
 			// To incorporate the first (,) after 1st column in update query
 			boolean firstRow = true;
 			if (transaction.getNameOnCard() != null) {
-				if (!firstRow) {
-					sb.append(",");
-				}
-				firstRow = false;
+				firstRow = isFirst(sb, firstRow);
+
 				sb.append(" NameOnCard = '");
-				sb.append(transaction.getNameOnCard());
+				sb.append(validateString(transaction.getNameOnCard()));
 				sb.append("'");
 			}
 			if (transaction.getCardNo() != null) {
-				if (!firstRow) {
-					sb.append(",");
-				}
-				firstRow = false;
+				firstRow = isFirst(sb, firstRow);
+
 				sb.append(" CardNumber = '");
 				sb.append(transaction.getCardNo());
-				sb.append("'");
 
-				sb.append(",");
-				sb.append(" CardType = '");
-				sb.append(transaction.getCardType());
+				sb.append("', CardType = '");
+				sb.append(getCardType(transaction.getCardNo()));
 				sb.append("'");
 			}
-			if (transaction.getUnitPrice() != null) {
-				if (!firstRow) {
-					sb.append(",");
+
+			if (transaction.getUnitPrice() != null || transaction.getQuantity() != null) {
+				firstRow = isFirst(sb, firstRow);
+
+				if (transaction.getUnitPrice() == null) {
+					l.severe("Error|Unit Price cannot be null");
+					return false;
 				}
-				firstRow = false;
 				sb.append(" UnitPrice = ");
 				sb.append(transaction.getUnitPrice());
-			}
-			if (transaction.getQuantity() != null) {
-				if (!firstRow) {
-					sb.append(",");
+				sb.append(",");
+
+				if (transaction.getQuantity() == null) {
+					l.severe("Error|Quantity cannot be null");
+					return false;
 				}
-				firstRow = false;
 				sb.append(" Quantity = ");
 				sb.append(transaction.getQuantity());
+
+				sb.append(", TotalPrice = ");
+				sb.append(transaction.getUnitPrice() * transaction.getQuantity());
 			}
-			if (transaction.getTotalPrice() != null) {
-				if (!firstRow) {
-					sb.append(",");
-				}
-				firstRow = false;
-				sb.append(" TotalPrice = ");
-				sb.append(transaction.getTotalPrice());
-			}
+
 			if (transaction.getExpDate() != null) {
-				if (!firstRow) {
-					sb.append(",");
-				}
-				firstRow = false;
+				firstRow = isFirst(sb, firstRow);
 				sb.append(" ExpDate = '");
-				sb.append(transaction.getExpDate());
+				sb.append(validateDate(transaction.getExpDate()));
 				sb.append("'");
 			}
 			if (firstRow) {
@@ -102,6 +93,50 @@ public class MySQLAccess implements SQLAccess{
 			return false;
 		}
 		return true;
+	}
+
+	private String validateDate(String expDate) throws Exception {
+		String[] eDate = expDate.split("/");
+
+		int month = Integer.parseInt(eDate[0]);
+		if (month > 0 && month < 13) {
+			throw new Exception("Invalid month|month:" + month);
+		}
+
+		int year = Integer.parseInt(eDate[1]);
+		if (year < 2016 && year > 2031) {
+			throw new Exception("Invalid year (Not between 2016 and 2031)|year:" + year);
+		}
+
+		return expDate;
+	}
+
+	private String getCardType(String cardNo) throws Exception {
+		if (cardNo.matches("[0-9]+")) {
+			if (cardNo.matches("^[5][1-5].*") && cardNo.length() == 16) {
+				return "MasterCard";
+			} else if (cardNo.matches("^[4].*") && cardNo.length() == 16) {
+				return "Visa";
+			} else if (cardNo.matches("^[3][4|7].*") && cardNo.length() == 15) {
+				return "American Express";
+			}
+		}
+		throw new Exception("Invalid Credit Card");
+	}
+
+	private boolean isFirst(StringBuilder sb, boolean firstRow) {
+		if (!firstRow) {
+			sb.append(",");
+		}
+		firstRow = false;
+		return firstRow;
+	}
+
+	private String validateString(String string) throws Exception {
+		if (string == null || string.matches(".*[;:!@#$%^*+?<>].*")) {
+			throw new Exception("Invalid String:" + string);
+		}
+		return string;
 	}
 
 	public Transaction getTransaction(int transactionId) {
@@ -143,22 +178,23 @@ public class MySQLAccess implements SQLAccess{
 	}
 
 	public boolean removeTransaction(int transactionId) {
-		int rowCount = 0;
 		try {
-			rowCount = statement.executeUpdate("delete from transaction where id = " + transactionId);
+			int rowCount = statement.executeUpdate("delete from transaction where id = " + transactionId);
+			if (rowCount == 0) {
+				l.warning("No transaction with transaction id:" + transactionId);
+			}
 		} catch (Exception e) {
 			l.severe("Error in removing Transaction from MySQL|" + e);
-		}
-		if (rowCount == 0) {
-			l.warning("No transaction with transaction id:" + transactionId);
 			return false;
 		}
+
 		return true;
 	}
 
 	public boolean createTransaction(Transaction transaction) {
 		int rowCount = 0;
 		try {
+			validateTransaction(transaction);
 			rowCount = statement.executeUpdate(
 					"insert into transaction values (" + transaction.getId() + ", '" + transaction.getNameOnCard()
 							+ "', '" + transaction.getCardNo() + "', " + transaction.getUnitPrice() + ", "
@@ -178,5 +214,20 @@ public class MySQLAccess implements SQLAccess{
 			return false;
 		}
 		return true;
+	}
+
+	private void validateTransaction(Transaction transaction) throws Exception {
+		if (transaction.getId() == null || transaction.getNameOnCard() == null || transaction.getCardNo() == null
+				|| transaction.getUnitPrice() == null || transaction.getQuantity() == null
+				|| transaction.getExpDate() == null) {
+
+			throw new Exception("Less Transaction details");
+		}
+		transaction.setNameOnCard(validateString(transaction.getNameOnCard()));
+		transaction.setCardType(getCardType(transaction.getCardNo()));
+		transaction.setTotalPrice(transaction.getUnitPrice() * transaction.getQuantity());
+		transaction.setExpDate(validateDate(transaction.getExpDate()));
+		transaction.setCreatedOn(new Date());
+		transaction.setCreatedBy(System.getProperty("user.name"));
 	}
 }
