@@ -44,10 +44,10 @@ public class TransactionWebserviceImplProxy implements com.mcda5510.assignment3.
     return transactionWebserviceImpl;
   }
   
-  public boolean updateTransaction(com.mcda5510.assignment3.entity.Transaction transaction) throws java.rmi.RemoteException{
+  public com.mcda5510.assignment3.entity.Transaction getTransaction(int transactionId) throws java.rmi.RemoteException{
     if (transactionWebserviceImpl == null)
       _initTransactionWebserviceImplProxy();
-    return transactionWebserviceImpl.updateTransaction(transaction);
+    return transactionWebserviceImpl.getTransaction(transactionId);
   }
   
   public boolean removeTransaction(int transactionId) throws java.rmi.RemoteException{
@@ -62,10 +62,10 @@ public class TransactionWebserviceImplProxy implements com.mcda5510.assignment3.
     return transactionWebserviceImpl.createTransaction(transaction);
   }
   
-  public com.mcda5510.assignment3.entity.Transaction getTransaction(int transactionId) throws java.rmi.RemoteException{
+  public boolean updateTransaction(com.mcda5510.assignment3.entity.Transaction transaction) throws java.rmi.RemoteException{
     if (transactionWebserviceImpl == null)
       _initTransactionWebserviceImplProxy();
-    return transactionWebserviceImpl.getTransaction(transactionId);
+    return transactionWebserviceImpl.updateTransaction(transaction);
   }
   
   

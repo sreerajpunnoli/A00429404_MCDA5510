@@ -61,36 +61,8 @@ valid = false;
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=org.eclipse.jst.ws.util.JspUtils.markup(method)%>">
 <TABLE>
 <TR>
-<TD COLSPAN="3" ALIGN="LEFT">transaction:</TD>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">id:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id22" SIZE=20></TD>
-</TR>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">quantity:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="quantity24" SIZE=20></TD>
-</TR>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">expDate:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="expDate26" SIZE=20></TD>
-</TR>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">nameOnCard:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="nameOnCard28" SIZE=20></TD>
-</TR>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">unitPrice:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="unitPrice30" SIZE=20></TD>
-</TR>
-<TR>
-<TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">cardNo:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="cardNo36" SIZE=20></TD>
+<TD COLSPAN="1" ALIGN="LEFT">transactionId:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="transactionId36" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>
@@ -126,6 +98,16 @@ valid = false;
 <TD COLSPAN="3" ALIGN="LEFT">transaction:</TD>
 <TR>
 <TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">createdBy:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="createdBy48" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">cardType:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="cardType50" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">id:</TD>
 <TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id52" SIZE=20></TD>
 </TR>
@@ -151,6 +133,27 @@ valid = false;
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">totalPrice:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="totalPrice62" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">createdOn:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="createdOn64" SIZE=20></TD>
+<%
+java.text.DateFormat dateFormatcreatedOn64 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExampcreatedOn64  = new java.util.GregorianCalendar();
+java.util.Date datecreatedOn64 = gcExampcreatedOn64.getTime();
+String tempResultcreatedOn64 = dateFormatcreatedOn64.format(datecreatedOn64);
+%>
+<TD ALIGN="left">
+</TR>
+<TR>
+<TD> </TD>
+<TD ALIGN="left"> eg. <%= tempResultcreatedOn64 %> </TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
 <TD COLSPAN="2" ALIGN="LEFT">cardNo:</TD>
 <TD ALIGN="left"><INPUT TYPE="TEXT" NAME="cardNo66" SIZE=20></TD>
 </TR>
@@ -168,8 +171,67 @@ valid = false;
 <INPUT TYPE="HIDDEN" NAME="method" VALUE="<%=org.eclipse.jst.ws.util.JspUtils.markup(method)%>">
 <TABLE>
 <TR>
-<TD COLSPAN="1" ALIGN="LEFT">transactionId:</TD>
-<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="transactionId91" SIZE=20></TD>
+<TD COLSPAN="3" ALIGN="LEFT">transaction:</TD>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">createdBy:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="createdBy73" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">cardType:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="cardType75" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">id:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="id77" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">quantity:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="quantity79" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">expDate:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="expDate81" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">nameOnCard:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="nameOnCard83" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">unitPrice:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="unitPrice85" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">totalPrice:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="totalPrice87" SIZE=20></TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">createdOn:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="createdOn89" SIZE=20></TD>
+<%
+java.text.DateFormat dateFormatcreatedOn89 = java.text.DateFormat.getDateInstance();
+java.util.GregorianCalendar gcExampcreatedOn89  = new java.util.GregorianCalendar();
+java.util.Date datecreatedOn89 = gcExampcreatedOn89.getTime();
+String tempResultcreatedOn89 = dateFormatcreatedOn89.format(datecreatedOn89);
+%>
+<TD ALIGN="left">
+</TR>
+<TR>
+<TD> </TD>
+<TD ALIGN="left"> eg. <%= tempResultcreatedOn89 %> </TD>
+</TR>
+<TR>
+<TD WIDTH="5%"></TD>
+<TD COLSPAN="2" ALIGN="LEFT">cardNo:</TD>
+<TD ALIGN="left"><INPUT TYPE="TEXT" NAME="cardNo91" SIZE=20></TD>
 </TR>
 </TABLE>
 <BR>

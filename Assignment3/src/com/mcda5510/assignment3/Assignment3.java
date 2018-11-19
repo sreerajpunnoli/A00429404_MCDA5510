@@ -10,7 +10,7 @@ import com.mcda5510.assignment3.dao.MySQLAccess;
 
 public class Assignment3 {
 
-	public final Logger l = Logger.getLogger("Assignment3");
+	private final Logger l = Logger.getLogger("Assignment3");
 
 	public MySQLAccess dao = null;
 
@@ -33,6 +33,8 @@ public class Assignment3 {
 			DBConnection connection = connectionFactory.getConnection();
 
 			dao = (MySQLAccess) connection.connect();
+			l.info("MYSQL Connection created");
+
 		}
 	}
 

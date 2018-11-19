@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -11,9 +12,11 @@ import com.mcda5510.assignment3.entity.Transaction;
 
 public class MySQLAccess implements SQLAccess {
 
-	public static final Logger l = Logger.getLogger("Assignment3");
+	private final Logger l = Logger.getLogger("Assignment3");
 
 	private Statement statement;
+
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public MySQLAccess(Statement statement) {
 		this.statement = statement;
@@ -90,8 +93,11 @@ public class MySQLAccess implements SQLAccess {
 		}
 
 		if (rowCount == 0) {
+			l.info("Update Transaction unsuccessful|No transaction updated");
 			return false;
 		}
+		
+		l.info("Update Transaction successful");
 		return true;
 	}
 
@@ -99,7 +105,7 @@ public class MySQLAccess implements SQLAccess {
 		String[] eDate = expDate.split("/");
 
 		int month = Integer.parseInt(eDate[0]);
-		if (month > 0 && month < 13) {
+		if (month < 1 && month > 12) {
 			throw new Exception("Invalid month|month:" + month);
 		}
 
@@ -163,6 +169,7 @@ public class MySQLAccess implements SQLAccess {
 				transaction.setCardType(resultSet.getString("CardType"));
 			}
 
+			l.info("Get Transaction successful");
 		} catch (Exception e) {
 			l.severe("Error in getting Transaction from MySQL|" + e);
 		}
@@ -174,6 +181,7 @@ public class MySQLAccess implements SQLAccess {
 				l.severe("Error in closing resultSet|" + e);
 			}
 		}
+		
 		return transaction;
 	}
 
@@ -188,6 +196,7 @@ public class MySQLAccess implements SQLAccess {
 			return false;
 		}
 
+		l.info("Remove Transaction successful");
 		return true;
 	}
 
@@ -199,7 +208,7 @@ public class MySQLAccess implements SQLAccess {
 					"insert into transaction values (" + transaction.getId() + ", '" + transaction.getNameOnCard()
 							+ "', '" + transaction.getCardNo() + "', " + transaction.getUnitPrice() + ", "
 							+ transaction.getQuantity() + " , " + transaction.getTotalPrice() + ", '"
-							+ transaction.getExpDate() + "', " + transaction.getCreatedOn() + ", '"
+							+ transaction.getExpDate() + "', '" + format.format(transaction.getCreatedOn()) + "', '"
 							+ transaction.getCreatedBy() + "', '" + transaction.getCardType() + "')");
 
 		} catch (Exception e) {
@@ -211,8 +220,10 @@ public class MySQLAccess implements SQLAccess {
 		}
 
 		if (rowCount == 0) {
+			l.info("Create Transaction unsuccessful|No transaction created");
 			return false;
 		}
+		l.info("Create Transaction successful");
 		return true;
 	}
 
