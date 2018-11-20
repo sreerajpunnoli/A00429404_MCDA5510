@@ -101,7 +101,7 @@ valid = false;
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">expDate:</TD>
+<TD COLSPAN="2" ALIGN="LEFT">expDate(MM/yyyy):</TD>
 <TD ALIGN="left"><INPUT TYPE="TEXT" NAME="expDate51" SIZE=20></TD>
 </TR>
 <TR>
@@ -177,7 +177,7 @@ valid = false;
 </TR>
 <TR>
 <TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">expDate:</TD>
+<TD COLSPAN="2" ALIGN="LEFT">expDate(MM/yyyy):</TD>
 <TD ALIGN="left"><INPUT TYPE="TEXT" NAME="expDate76" SIZE=20></TD>
 </TR>
 <TR>

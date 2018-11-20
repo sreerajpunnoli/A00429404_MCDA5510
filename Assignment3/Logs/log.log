@@ -1,2 +1,18 @@
-Nov 19, 2018 9:58:06 PM com.mcda5510.assignment3.dao.MySQLAccess getTransaction
-INFO: Get Transaction successful
+Nov 19, 2018 10:41:51 PM com.mcda5510.assignment3.dao.MySQLAccess createTransaction
+INFO: Create Transaction successful
+Nov 19, 2018 10:42:03 PM com.mcda5510.assignment3.dao.MySQLAccess getTransaction
+INFO: Get Transaction successful|Transaction:[id:666 ,nameOnCard:Sree ,cardNo:5161400050006000 ,unitPrice:10.0 ,quantity:12 ,totalPrice:120.0 ,expDate:12/2018 ,createdOn:2018-11-19 18:41:51.0 ,createdBy:s_punnoli ,cardType:MasterCard]
+Nov 19, 2018 10:42:36 PM com.mcda5510.assignment3.dao.MySQLAccess updateTransaction
+INFO: Update Transaction successful
+Nov 19, 2018 10:42:44 PM com.mcda5510.assignment3.dao.MySQLAccess getTransaction
+INFO: Get Transaction successful|Transaction:[id:666 ,nameOnCard:Sreeraj ,cardNo:4000500060007000 ,unitPrice:100.0 ,quantity:11 ,totalPrice:1100.0 ,expDate:12/2022 ,createdOn:2018-11-19 18:41:51.0 ,createdBy:s_punnoli ,cardType:Visa]
+Nov 19, 2018 10:43:14 PM com.mcda5510.assignment3.dao.MySQLAccess createTransaction
+SEVERE: Transaction already exits|Only Updation is possible|java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '666' for key 'PRIMARY'
+Nov 19, 2018 10:43:14 PM com.mcda5510.assignment3.dao.MySQLAccess createTransaction
+INFO: Create Transaction unsuccessful|No transaction created
+Nov 19, 2018 10:43:23 PM com.mcda5510.assignment3.dao.MySQLAccess removeTransaction
+INFO: Remove Transaction successful
+Nov 19, 2018 10:44:20 PM com.mcda5510.assignment3.dao.MySQLAccess createTransaction
+INFO: Create Transaction successful
+Nov 19, 2018 10:44:27 PM com.mcda5510.assignment3.dao.MySQLAccess getTransaction
+INFO: Get Transaction successful|Transaction:[id:666 ,nameOnCard:Sree ,cardNo:340050006000700 ,unitPrice:11.0 ,quantity:12 ,totalPrice:132.0 ,expDate:11/2023 ,createdOn:2018-11-19 18:44:20.0 ,createdBy:s_punnoli ,cardType:American Express]

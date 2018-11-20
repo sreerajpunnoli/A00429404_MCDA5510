@@ -1,0 +1,55 @@
+19-Nov-2018 22:40:54.187 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/9.0.12
+19-Nov-2018 22:40:54.193 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 4 2018 22:13:41 UTC
+19-Nov-2018 22:40:54.193 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         9.0.12.0
+19-Nov-2018 22:40:54.194 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Nov-2018 22:40:54.194 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            4.4.0-138-generic
+19-Nov-2018 22:40:54.194 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Nov-2018 22:40:54.194 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-8-oracle/jre
+19-Nov-2018 22:40:54.194 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_77-b03
+19-Nov-2018 22:40:54.195 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+19-Nov-2018 22:40:54.195 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12
+19-Nov-2018 22:40:54.195 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12
+19-Nov-2018 22:40:54.196 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/conf/logging.properties
+19-Nov-2018 22:40:54.196 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Nov-2018 22:40:54.196 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Nov-2018 22:40:54.197 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Nov-2018 22:40:54.197 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Nov-2018 22:40:54.197 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Nov-2018 22:40:54.197 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12
+19-Nov-2018 22:40:54.197 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12
+19-Nov-2018 22:40:54.198 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/temp
+19-Nov-2018 22:40:54.198 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+19-Nov-2018 22:40:54.508 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-9090"]
+19-Nov-2018 22:40:54.540 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Nov-2018 22:40:54.576 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-9091"]
+19-Nov-2018 22:40:54.579 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Nov-2018 22:40:54.580 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1229 ms
+19-Nov-2018 22:40:54.638 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Nov-2018 22:40:54.639 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/9.0.12
+19-Nov-2018 22:40:54.689 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/Assignment3Client.war]
+19-Nov-2018 22:40:56.225 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Nov-2018 22:40:56.449 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/Assignment3Client.war] has finished in [1,758] ms
+19-Nov-2018 22:40:56.451 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/Assignment3.war]
+19-Nov-2018 22:40:57.233 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Nov-2018 22:40:57.503 WARNING [main] org.apache.axis.utils.JavaUtils.isAttachmentSupported Unable to find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). Attachment support is disabled.
+19-Nov-2018 22:40:57.756 INFO [main] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/Assignment3.war] has finished in [1,306] ms
+19-Nov-2018 22:40:57.758 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/host-manager]
+19-Nov-2018 22:40:58.264 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Nov-2018 22:40:58.277 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/host-manager] has finished in [519] ms
+19-Nov-2018 22:40:58.278 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/manager]
+19-Nov-2018 22:40:58.572 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Nov-2018 22:40:58.578 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/manager] has finished in [300] ms
+19-Nov-2018 22:40:58.579 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/ROOT]
+19-Nov-2018 22:40:58.873 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Nov-2018 22:40:58.877 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/ROOT] has finished in [298] ms
+19-Nov-2018 22:40:58.878 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/docs]
+19-Nov-2018 22:40:59.248 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Nov-2018 22:40:59.253 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/docs] has finished in [374] ms
+19-Nov-2018 22:40:59.254 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/examples]
+19-Nov-2018 22:40:59.788 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Nov-2018 22:40:59.858 INFO [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/home/student_2018_fall/s_punnoli/tomcat/apache-tomcat-9.0.12/webapps/examples] has finished in [604] ms
+19-Nov-2018 22:41:00.036 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-9090"]
+19-Nov-2018 22:41:00.078 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-9091"]
+19-Nov-2018 22:41:00.101 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 5519 ms
+19-Nov-2018 22:41:05.731 WARNING [http-nio-9090-exec-5] org.apache.axis.utils.JavaUtils.isAttachmentSupported Unable to find required classes (javax.activation.DataHandler and javax.mail.internet.MimeMultipart). Attachment support is disabled.
+19-Nov-2018 22:41:51.182 INFO [http-nio-9090-exec-6] com.mcda5510.assignment3.Assignment3.createConnection MYSQL Connection created
