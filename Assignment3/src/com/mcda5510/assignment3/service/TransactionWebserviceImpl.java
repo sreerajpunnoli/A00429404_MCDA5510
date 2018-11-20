@@ -48,7 +48,7 @@ public class TransactionWebserviceImpl implements TransactionWebservice {
 
 	private void addLogProperties() {
 		if (l == null) {
-			l = Logger.getLogger("Assignment2");
+			l = Logger.getLogger("Assignment3");
 			InputStream inputStream = getClass().getClassLoader().getResourceAsStream(LOG_PROPERTIES);
 			try {
 				LogManager.getLogManager().readConfiguration(inputStream);

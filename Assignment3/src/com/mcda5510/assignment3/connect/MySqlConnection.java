@@ -22,13 +22,13 @@ public class MySqlConnection implements DBConnection {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 
 				//Local MySQL Config
-				String url = "jdbc:mysql://localhost/transactions";
-				String username = "root";
-				String password = "bullet";
+//				String url = "jdbc:mysql://localhost/transactions";
+//				String username = "root";
+//				String password = "bullet";
 				//Server MySQL Config
-//				String url = "jdbc:mysql://localhost/s_punnoli";
-//				String username = "s_punnoli";
-//				String password = "A00429404";
+				String url = "jdbc:mysql://localhost/s_punnoli";
+				String username = "s_punnoli";
+				String password = "A00429404";
 
 				connection = DriverManager.getConnection(url + "?" + "user=" + username + "&password=" + password // Creds
 						+ "&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"); // timezone

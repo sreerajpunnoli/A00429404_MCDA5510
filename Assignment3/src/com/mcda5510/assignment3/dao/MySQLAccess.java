@@ -96,7 +96,7 @@ public class MySQLAccess implements SQLAccess {
 			l.info("Update Transaction unsuccessful|No transaction updated");
 			return false;
 		}
-		
+
 		l.info("Update Transaction successful");
 		return true;
 	}
@@ -169,7 +169,7 @@ public class MySQLAccess implements SQLAccess {
 				transaction.setCardType(resultSet.getString("CardType"));
 			}
 
-			l.info("Get Transaction successful");
+			l.info("Get Transaction successful|Transaction:" + transaction.toString());
 		} catch (Exception e) {
 			l.severe("Error in getting Transaction from MySQL|" + e);
 		}
@@ -181,7 +181,7 @@ public class MySQLAccess implements SQLAccess {
 				l.severe("Error in closing resultSet|" + e);
 			}
 		}
-		
+
 		return transaction;
 	}
 

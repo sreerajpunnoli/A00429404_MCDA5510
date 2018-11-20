@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -36,16 +36,16 @@
   <ns3:operation name="getTransaction" qname="ns1:getTransaction" returnQName="ns1:getTransactionReturn" returnType="ns2:Transaction" soapAction="" xmlns:ns1="http://service.assignment3.mcda5510.com" xmlns:ns2="http://entity.assignment3.mcda5510.com" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
    <ns3:parameter qname="ns1:transactionId" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns3:operation>
-  <ns1:operation name="removeTransaction" qname="ns3:removeTransaction" returnQName="ns3:removeTransactionReturn" returnType="xsd:boolean" soapAction="" xmlns:ns3="http://service.assignment3.mcda5510.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns3:transactionId" type="xsd:int"/>
+  <ns1:operation name="createTransaction" qname="ns3:createTransaction" returnQName="ns3:createTransactionReturn" returnType="xsd:boolean" soapAction="" xmlns:ns3="http://service.assignment3.mcda5510.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:transaction" type="ns4:Transaction" xmlns:ns4="http://entity.assignment3.mcda5510.com"/>
   </ns1:operation>
-  <ns1:operation name="createTransaction" qname="ns4:createTransaction" returnQName="ns4:createTransactionReturn" returnType="xsd:boolean" soapAction="" xmlns:ns4="http://service.assignment3.mcda5510.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns4:transaction" type="ns5:Transaction" xmlns:ns5="http://entity.assignment3.mcda5510.com"/>
+  <ns1:operation name="updateTransaction" qname="ns5:updateTransaction" returnQName="ns5:updateTransactionReturn" returnType="xsd:boolean" soapAction="" xmlns:ns5="http://service.assignment3.mcda5510.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:transaction" type="ns6:Transaction" xmlns:ns6="http://entity.assignment3.mcda5510.com"/>
   </ns1:operation>
-  <ns1:operation name="updateTransaction" qname="ns6:updateTransaction" returnQName="ns6:updateTransactionReturn" returnType="xsd:boolean" soapAction="" xmlns:ns6="http://service.assignment3.mcda5510.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns6:transaction" type="ns7:Transaction" xmlns:ns7="http://entity.assignment3.mcda5510.com"/>
+  <ns1:operation name="removeTransaction" qname="ns7:removeTransaction" returnQName="ns7:removeTransactionReturn" returnType="xsd:boolean" soapAction="" xmlns:ns7="http://service.assignment3.mcda5510.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:transactionId" type="xsd:int"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="removeTransaction updateTransaction createTransaction getTransaction"/>
+  <ns1:parameter name="allowedMethods" value="updateTransaction removeTransaction createTransaction getTransaction"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="TransactionWebserviceImpl"/>
   <ns1:parameter name="className" value="com.mcda5510.assignment3.service.TransactionWebserviceImpl"/>

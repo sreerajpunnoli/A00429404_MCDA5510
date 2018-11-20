@@ -19,20 +19,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
-   <element name="removeTransaction">
-    <complexType>
-     <sequence>
-      <element name="transactionId" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="removeTransactionResponse">
-    <complexType>
-     <sequence>
-      <element name="removeTransactionReturn" type="xsd:boolean"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="createTransaction">
     <complexType>
      <sequence>
@@ -58,6 +44,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="updateTransactionReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeTransaction">
+    <complexType>
+     <sequence>
+      <element name="transactionId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeTransactionResponse">
+    <complexType>
+     <sequence>
+      <element name="removeTransactionReturn" type="xsd:boolean"/>
      </sequence>
     </complexType>
    </element>
@@ -158,18 +158,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="removeTransaction">
-
-         <wsdl:input message="impl:removeTransactionRequest" name="removeTransactionRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:removeTransactionResponse" name="removeTransactionResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="createTransaction">
 
          <wsdl:input message="impl:createTransactionRequest" name="createTransactionRequest">
@@ -194,6 +182,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="removeTransaction">
+
+         <wsdl:input message="impl:removeTransactionRequest" name="removeTransactionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:removeTransactionResponse" name="removeTransactionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:portType>
 
    <wsdl:binding name="TransactionWebserviceImplSoapBinding" type="impl:TransactionWebserviceImpl">
@@ -211,24 +211,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getTransactionResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="removeTransaction">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="removeTransactionRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="removeTransactionResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -265,6 +247,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="updateTransactionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeTransaction">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="removeTransactionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="removeTransactionResponse">
 
             <wsdlsoap:body use="literal"/>
 
